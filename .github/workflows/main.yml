@@ -1,4 +1,4 @@
-name: MoHH2 deployment pipeline
+name: MoHH Server deployment pipeline
 
 on:
   workflow_dispatch:
@@ -18,19 +18,19 @@ jobs:
       run: |
         echo DB_USERNAME=${{ secrets.DB_USERNAME }} >> .env
         echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-        echo DB_NAME=mohh2db >> .env
-        echo WII_PAL_DB_PORT=5432 >> .env
-        echo WII_NTSC_DB_PORT=5433 >> .env
-        echo PSP_PAL_DB_PORT=5434 >> .env
-        echo PSP_NTSC_DB_PORT=5435 >> .env
+        echo DB_NAME=mohh_db >> .env
+        echo DB_PORT=5432 >> .env
         echo TCP_HOST_IP=${{ secrets.SERVER_IP }} >> .env
-        echo UDP_HOST_IP=127.0.0.1 >> .env
+        echo GPS_NAME=${{ secrets.GPS_NAME }} >> .env
+        echo GPS_PWD=${{ secrets.GPS_PWD }} >> .env
+        echo GPS_ADM_PWD=${{ secrets.GPS_ADM_PWD }} >> .env
 
     - name: Generate dnsmasq.conf
       run: |
         cat << EOF > dns-server/dnsmasq.conf
-        address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmoh07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspmoh08.ea.com/${{ secrets.SERVER_IP }}
+        address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
         address=/tos.ea.com/${{ secrets.SERVER_IP }}
         address=/naswii.nintendowifi.net/${{ secrets.SERVER_IP }}
         EOF
@@ -41,7 +41,7 @@ jobs:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
-        script: rm -rf /var/www/mohh2-server/*
+        script: rm -rf /var/www/mohh-master-server/*
 
     - name: Copy project files to remote server
       uses: appleboy/scp-action@master
@@ -50,7 +50,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         source: "."
-        target: "/var/www/mohh2-server"
+        target: "/var/www/mohh-master-server"
 
     - name: Login to GitHub Docker Registry
       uses: docker/login-action@v1
@@ -66,7 +66,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
-          cd /var/www/mohh2-server
+          cd /var/www/mohh-master-server
           source .env
           docker-compose down
           docker-compose pull
