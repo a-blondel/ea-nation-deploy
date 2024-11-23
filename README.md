@@ -16,6 +16,14 @@ A docker compose project designed to automate the deployment of [Medal of Honor:
   - `GPS_NAME` : The name of the game account used to host GPS server instances
   - `GPS_PWD` : The password of the game account used to host GPS server instances
   - `GPS_ADMIN_PWD` : The password to access the admin menu of GPS server instances in the game
+  - `DNS_NAME` : The DNS name of the server (used to serve the EA ToS directly and IP change detection using the Discord bot)
+  - `DISCORD_TOKEN` : The Discord token of the bot
+  - `DISCORD_CHANNEL_ID` : The id of the channel in which the bot will send updates (scoreboards, events)
+
+
+  You can also customize hardcoded values like these :
+  - `TCP_DEBUG_ENABLED` : Fully logs the TCP packets
+  - `TCP_DEBUG_EXCLUSIONS` : Define which packets not to log (e.g. they are too verbose)
   - `GPS_PORT` : The port of the first GPS server instance, defaults to 3658. Every instance will use a port starting from this one
   - `GPS_INSTANCE` : The number of GPS server instances to run, defaults to 1
 - Run the workflow

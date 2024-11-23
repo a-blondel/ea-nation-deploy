@@ -50,7 +50,7 @@ services:
       - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
       - TOS_ENABLED=false
-      - TOS_HOSTNAME=http://ablondel.ddns.net
+      - TOS_BASE_URL=http://${DNS_NAME}
       - LOGS=/var/log/mohh
     volumes:
       - app_logs:/var/log/mohh
@@ -83,6 +83,20 @@ services:
       - "3688-3697:3688-3697/udp" # GPS UDP ping ports
     extra_hosts:
       - "pspmoh07.ea.com:${TCP_HOST_IP}"
+
+  mohh-discord-bot:
+    image: ghcr.io/a-blondel/mohh-discord-bot/mohh-discord-bot:latest
+    restart: unless-stopped
+    environment:
+      - DB_URL=jdbc:postgresql://postgres-mohh:5432/${DB_NAME}
+      - DB_USERNAME
+      - DB_PASSWORD
+      - DNS_NAME=${DNS_NAME}
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID}
+      - REPORTS_PATH=/var/log/mohh/reports
+    volumes:
+      - app_logs:/var/log/mohh
 
 volumes:
   db_data:
