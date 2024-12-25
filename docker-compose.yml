@@ -19,25 +19,6 @@ services:
       - "53:53/udp"
       - "53:53/tcp"
 
-  ea-tos-nwc-bundle-http:
-    build: ./ea-tos-server
-    image: ea-tos-nwc-bundle-server
-    restart: unless-stopped
-    command: start-http
-    volumes:
-      - /var/www/certs:/app/certs
-    ports:
-      - "80:80"
-
-  ea-tos-nwc-bundle-https:
-    image: ea-tos-nwc-bundle-server
-    restart: unless-stopped
-    command: start-https
-    volumes:
-      - /var/www/certs:/app/certs
-    ports:
-      - "443:443"
-
   mohh-master-server:
     image: ghcr.io/a-blondel/mohh-master-server/mohh-master-server:latest
     restart: unless-stopped
@@ -49,13 +30,13 @@ services:
       - TCP_DEBUG_ENABLED=false
       - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
-      - TOS_ENABLED=false
       - TOS_BASE_URL=http://${DNS_NAME}
       - LOGS=/var/log/mohh
     volumes:
       - app_logs:/var/log/mohh
     ports:
-      - "8080:8080" # master server http
+      - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
+      - "8080:8080" # master server APIs
       - "11180:11180" # mohh psp pal tcp
       - "11181:11181" # mohh psp pal ssl
       - "11190:11190" # mohh psp ntsc tcp
@@ -71,6 +52,7 @@ services:
 
   mohh-gps:
     image: ghcr.io/a-blondel/mohh-gps-docker/mohh-gps-docker:latest
+    restart: unless-stopped
     privileged: true
     environment:
       - GPS_NAME=${GPS_NAME}
@@ -86,6 +68,7 @@ services:
 
   mohh-uhs:
     image: ghcr.io/a-blondel/mohh-uhs-docker/mohh-uhs-docker:latest
+    restart: unless-stopped
     privileged: true
     environment:
       - UHS_NAME=${GPS_NAME}
