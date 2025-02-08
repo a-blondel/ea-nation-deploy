@@ -30,7 +30,9 @@ services:
       - TCP_DEBUG_ENABLED=false
       - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
-      - TOS_BASE_URL=http://${DNS_NAME}
+      - DNS_NAME=http://${DNS_NAME}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
       - LOGS=/var/log/mohh
     volumes:
       - app_logs:/var/log/mohh
