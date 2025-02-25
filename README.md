@@ -21,7 +21,7 @@ A docker compose project designed to automate the deployment of [Medal of Honor:
   - `MAIL_PASSWORD` : The password of the email account used to send emails (for account recovery emails)
   - `DISCORD_TOKEN` : The Discord token of the bot
   - `DISCORD_CHANNEL_ID` : The id of the channel in which the bot will send updates (scoreboards, events)
-
+  - `MAXMIND_LICENSE_KEY` : The license key to use the MaxMind GeoLite2 database
 
   You can also customize hardcoded values like these :
   - `TCP_DEBUG_ENABLED` : Fully logs the TCP packets

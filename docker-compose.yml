@@ -96,6 +96,12 @@ services:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
       - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID}
       - REPORTS_PATH=/var/log/mohh/reports
+      - ENABLE_BOT_ACTIVITY=true
+      - ENABLE_EVENTS=true
+      - ENABLE_MAP=true
+      - MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY}
+      - MAP_TYPES=HEATMAP
+      - MAP_NAMES=false
     volumes:
       - app_logs:/var/log/mohh
 
