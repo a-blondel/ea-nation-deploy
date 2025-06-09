@@ -16,6 +16,7 @@ A docker compose project designed to automate the deployment of [Medal of Honor:
   - `GPS_NAME` : The name of the game account used to host GPS server instances
   - `GPS_PWD` : The password of the game account used to host GPS server instances
   - `GPS_ADMIN_PWD` : The password to access the admin menu of GPS server instances in the game
+  - `GPS_LOC` : The location (country/region) of the server
   - `DNS_NAME` : The DNS name of the server (used to serve the EA ToS directly and IP change detection using the Discord bot)
   - `MAIL_USERNAME` : The username of the email account used to send emails (for account recovery emails)
   - `MAIL_PASSWORD` : The password of the email account used to send emails (for account recovery emails)

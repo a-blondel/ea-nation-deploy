@@ -77,13 +77,12 @@ services:
       - UHS_PWD=${GPS_PWD}
       - UHS_ADM_PWD=${GPS_ADM_PWD}
       - UHS_PORT=3668
+      - UHS_LOC=${GPS_LOC}
     ports:
       - "3668-3677:3668-3677/udp" # UHS UDP ports
       - "3698-3707:3698-3707/udp" # UHS UDP ping ports
     extra_hosts:
       - "pspmoh07.ea.com:${TCP_HOST_IP}"
-    volumes:
-      - /var/www/uhs/maplist.txt:/var/www/mohh-uhs/maplist.txt
 
   mohh-discord-bot:
     image: ghcr.io/a-blondel/mohh-discord-bot/mohh-discord-bot:latest

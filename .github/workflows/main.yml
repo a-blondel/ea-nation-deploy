@@ -24,6 +24,7 @@ jobs:
         echo GPS_NAME=${{ secrets.GPS_NAME }} >> .env
         echo GPS_PWD=${{ secrets.GPS_PWD }} >> .env
         echo GPS_ADM_PWD=${{ secrets.GPS_ADM_PWD }} >> .env
+        echo GPS_LOC=${{ secrets.GPS_LOC }} >> .env
         echo DNS_NAME=${{ secrets.DNS_NAME }} >> .env
         echo MAIL_USERNAME=${{ secrets.MAIL_USERNAME }} >> .env
         echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
