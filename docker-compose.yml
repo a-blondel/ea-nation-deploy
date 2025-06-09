@@ -93,7 +93,6 @@ services:
       - DB_PASSWORD
       - DNS_NAME=${DNS_NAME}
       - DISCORD_TOKEN=${DISCORD_TOKEN}
-      - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID}
       - REPORTS_PATH=/var/log/mohh/reports
       - ENABLE_BOT_ACTIVITY=true
       - ENABLE_EVENTS=true
