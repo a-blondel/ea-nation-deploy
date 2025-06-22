@@ -28,7 +28,7 @@ services:
       - DB_PASSWORD
       - TCP_HOST_IP
       - TCP_DEBUG_ENABLED=false
-      - TCP_DEBUG_EXCLUSIONS=~png,+snp
+      - TCP_DEBUG_EXCLUSIONS=~png,+snp,AUTH,EPGT,RGET,PSET,USCH,DISC
       - SSL_DEBUG_ENABLED=false
       - DNS_NAME=http://${DNS_NAME}
       - MAIL_USERNAME=${MAIL_USERNAME}
@@ -39,6 +39,7 @@ services:
     ports:
       - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
       - "8080:8080" # master server APIs
+      - "5000:5000" # buddy server (EA Messenger)
       - "11180:11180" # mohh psp pal tcp
       - "11181:11181" # mohh psp pal ssl
       - "11190:11190" # mohh psp ntsc tcp
