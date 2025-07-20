@@ -20,7 +20,7 @@ services:
       - "53:53/tcp"
 
   mohh-master-server:
-    image: ghcr.io/a-blondel/mohh-master-server/mohh-master-server:latest
+    image: ghcr.io/a-blondel/ea-nation-server/ea-nation-server:latest
     restart: unless-stopped
     environment:
       - DB_URL=jdbc:postgresql://postgres-mohh:5432/${DB_NAME}
@@ -28,7 +28,7 @@ services:
       - DB_PASSWORD
       - TCP_HOST_IP
       - TCP_DEBUG_ENABLED=false
-      - TCP_DEBUG_EXCLUSIONS=~png,+snp,AUTH,EPGT,RGET,PSET,USCH,DISC
+      - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
       - DNS_NAME=http://${DNS_NAME}
       - MAIL_USERNAME=${MAIL_USERNAME}
@@ -40,18 +40,20 @@ services:
       - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
       - "8080:8080" # master server APIs
       - "5000:5000" # buddy server (EA Messenger)
-      - "11180:11180" # mohh psp pal tcp
-      - "11181:11181" # mohh psp pal ssl
-      - "11190:11190" # mohh psp ntsc tcp
-      - "11191:11191" # mohh psp ntsc ssl
-      - "21180:21180" # mohh2 psp pal tcp
-      - "21181:21181" # mohh2 psp pal ssl
-      - "21190:21190" # mohh2 psp ntsc tcp
-      - "21191:21191" # mohh2 psp ntsc ssl
-      - "21170:21170" # mohh2 wii pal tcp
-      - "21171:21171" # mohh2 wii pal ssl
-      - "21120:21120" # mohh2 wii ntsc tcp
-      - "21121:21121" # mohh2 wii ntsc ssl
+      - "10390:10390" # psp nhl07 tcp (global)
+      - "10391:10391" # psp nhl07 ssl (global)
+      - "11180:11180" # psp moh07 tcp (pal)
+      - "11181:11181" # psp moh07 ssl (pal)
+      - "11190:11190" # psp moh07 tcp (ntsc)
+      - "11191:11191" # psp moh07 ssl (ntsc)
+      - "21180:21180" # psp moh08 tcp (pal)
+      - "21181:21181" # psp moh08 ssl (pal)
+      - "21190:21190" # psp moh08 tcp (ntsc)
+      - "21191:21191" # psp moh08 ssl (ntsc)
+      - "21170:21170" # wii moh08 tcp (pal)
+      - "21171:21171" # wii moh08 ssl (pal)
+      - "21120:21120" # wii moh08 tcp (ntsc)
+      - "21121:21121" # wii moh08 ssl (ntsc)
 
   mohh-gps:
     image: ghcr.io/a-blondel/mohh-gps-docker/mohh-gps-docker:latest
@@ -62,10 +64,10 @@ services:
       - GPS_PWD=${GPS_PWD}
       - GPS_ADM_PWD=${GPS_ADM_PWD}
       - GPS_PORT=3658
-      - GPS_INSTANCES=10
+      - GPS_INSTANCES=5
     ports:
-      - "3658-3667:3658-3667/udp" # GPS UDP ports
-      - "3688-3697:3688-3697/udp" # GPS UDP ping ports
+      - "3658-3662:3658-3662/udp" # GPS UDP ports
+      - "3688-3692:3688-3692/udp" # GPS UDP ping ports
     extra_hosts:
       - "pspmoh07.ea.com:${TCP_HOST_IP}"
 
