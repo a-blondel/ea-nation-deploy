@@ -56,6 +56,8 @@ services:
       - "21171:21171" # wii moh08 ssl (pal)
       - "21120:21120" # wii moh08 tcp (ntsc)
       - "21121:21121" # wii moh08 ssl (ntsc)
+      - "30990:30990" # psp nfs09 tcp (global)
+      - "30991:30991" # psp nfs09 ssl (global)
 
   mohh-gps:
     image: ghcr.io/a-blondel/mohh-gps-docker/mohh-gps-docker:latest
