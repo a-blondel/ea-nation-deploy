@@ -35,7 +35,14 @@ jobs:
       run: |
         cat << EOF > dns-server/dnsmasq.conf
         address=/pspnhl07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspncaa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden09.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspfifa08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspfifa09.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs08.ea.com/${{ secrets.SERVER_IP }}
