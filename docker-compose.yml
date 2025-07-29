@@ -1,12 +1,12 @@
 services:
-  postgres-mohh:
+  postgres-ea-nation:
     image: postgres:17.0
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${DB_USERNAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
-      - PGDATA=/var/lib/postgresql/data/mohh
+      - PGDATA=/var/lib/postgresql/data/ea-nation
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
@@ -19,11 +19,11 @@ services:
       - "53:53/udp"
       - "53:53/tcp"
 
-  mohh-master-server:
+  ea-nation-server:
     image: ghcr.io/a-blondel/ea-nation-server/ea-nation-server:latest
     restart: unless-stopped
     environment:
-      - DB_URL=jdbc:postgresql://postgres-mohh:5432/${DB_NAME}
+      - DB_URL=jdbc:postgresql://postgres-ea-nation:5432/${DB_NAME}
       - DB_USERNAME
       - DB_PASSWORD
       - TCP_HOST_IP
@@ -33,9 +33,9 @@ services:
       - DNS_NAME=http://${DNS_NAME}
       - MAIL_USERNAME=${MAIL_USERNAME}
       - MAIL_PASSWORD=${MAIL_PASSWORD}
-      - LOGS=/var/log/mohh
+      - LOGS=/var/log/ea-nation
     volumes:
-      - app_logs:/var/log/mohh
+      - app_logs:/var/log/ea-nation
     ports:
       - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
       - "8080:8080" # master server APIs
@@ -86,6 +86,7 @@ services:
       - "30091:30091" # psp madden09 ssl (ntsc)
       - "30490:30490" # psp fifa09 tcp (global)
       - "30491:30491" # psp fifa09 ssl (global)
+      - "30980:30980" # psp nfs06 tcp (global)
       - "30990:30990" # psp nfs09 tcp (global)
       - "30991:30991" # psp nfs09 ssl (global)
 
@@ -121,16 +122,16 @@ services:
     extra_hosts:
       - "pspmoh07.ea.com:${TCP_HOST_IP}"
 
-  mohh-discord-bot:
-    image: ghcr.io/a-blondel/mohh-discord-bot/mohh-discord-bot:latest
+  ea-nation-bot:
+    image: ghcr.io/a-blondel/ea-nation-bot/ea-nation-bot:latest
     restart: unless-stopped
     environment:
-      - DB_URL=jdbc:postgresql://postgres-mohh:5432/${DB_NAME}
+      - DB_URL=jdbc:postgresql://postgres-ea-nation:5432/${DB_NAME}
       - DB_USERNAME
       - DB_PASSWORD
       - DNS_NAME=${DNS_NAME}
       - DISCORD_TOKEN=${DISCORD_TOKEN}
-      - REPORTS_PATH=/var/log/mohh/reports
+      - REPORTS_PATH=/var/log/ea-nation/reports
       - ENABLE_BOT_ACTIVITY=true
       - ENABLE_EVENTS=true
       - ENABLE_MAP=true
@@ -138,7 +139,7 @@ services:
       - MAP_TYPES=HEATMAP
       - MAP_NAMES=false
     volumes:
-      - app_logs:/var/log/mohh
+      - app_logs:/var/log/ea-nation
 
 volumes:
   db_data:

@@ -1,6 +1,6 @@
-# Medal of Honor: Heroes 2 - Deployment project
+# EA Nation server - Deployment project
 
-A docker compose project designed to automate the deployment of [Medal of Honor: Heroes's master server](https://github.com/a-blondel/mohh-master-server) and its requirements.
+A docker compose project designed to automate the deployment of [EA Nation server](https://github.com/a-blondel/ea-nation-server) and its requirements.
 
 ## How to deploy
 

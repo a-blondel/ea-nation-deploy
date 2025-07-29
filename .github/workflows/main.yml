@@ -1,4 +1,4 @@
-name: MoHH Server deployment pipeline
+name: EA Nation Server deployment pipeline
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
       run: |
         echo DB_USERNAME=${{ secrets.DB_USERNAME }} >> .env
         echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-        echo DB_NAME=mohh_db >> .env
+        echo DB_NAME=ea-nation_db >> .env
         echo DB_PORT=5432 >> .env
         echo TCP_HOST_IP=${{ secrets.SERVER_IP }} >> .env
         echo GPS_NAME=${{ secrets.GPS_NAME }} >> .env
@@ -44,6 +44,7 @@ jobs:
         address=/pspfifa08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa09.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa10.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspnfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs09.ea.com/${{ secrets.SERVER_IP }}
@@ -60,7 +61,7 @@ jobs:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
-        script: rm -rf /var/www/mohh-master-server/*
+        script: rm -rf /var/www/ea-nation-server/*
 
     - name: Copy project files to remote server
       uses: appleboy/scp-action@master
@@ -69,7 +70,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         source: "."
-        target: "/var/www/mohh-master-server"
+        target: "/var/www/ea-nation-server"
 
     - name: Login to GitHub Docker Registry
       uses: docker/login-action@v1
@@ -85,7 +86,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
-          cd /var/www/mohh-master-server
+          cd /var/www/ea-nation-server
           source .env
           docker-compose down --remove-orphans
           docker-compose pull
