@@ -34,23 +34,30 @@ jobs:
     - name: Generate dnsmasq.conf
       run: |
         cat << EOF > dns-server/dnsmasq.conf
-        address=/pspnhl07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspncaa07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspmadden07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspmadden08.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspmadden09.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspmadden10.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspuefa06.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspuefa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspworldcup10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa09.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa10.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspkok06.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden09.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmadden10.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmoh07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspmoh08.ea.com/${{ secrets.SERVER_IP }}
+        address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspncaa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspnhl07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs09.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspmoh07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspmoh08.ea.com/${{ secrets.SERVER_IP }}
-        address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
+        address=/psptw07.ea.com/${{ secrets.SERVER_IP }}
+        address=/psptw08.ea.com/${{ secrets.SERVER_IP }}
+        address=/psptw10.ea.com/${{ secrets.SERVER_IP }}
         address=/tos.ea.com/${{ secrets.SERVER_IP }}
         address=/naswii.nintendowifi.net/${{ secrets.SERVER_IP }}
         EOF
