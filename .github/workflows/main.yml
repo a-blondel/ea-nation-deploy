@@ -29,7 +29,6 @@ jobs:
         echo MAIL_USERNAME=${{ secrets.MAIL_USERNAME }} >> .env
         echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
         echo DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} >> .env
-        echo MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }} >> .env
 
     - name: Generate dnsmasq.conf
       run: |
@@ -49,6 +48,7 @@ jobs:
         address=/pspmoh07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspmoh08.ea.com/${{ secrets.SERVER_IP }}
         address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspnba06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnba07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnba08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspncaa07.ea.com/${{ secrets.SERVER_IP }}

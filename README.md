@@ -21,7 +21,6 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `MAIL_USERNAME` : The username of the email account used to send emails (for account recovery emails)
   - `MAIL_PASSWORD` : The password of the email account used to send emails (for account recovery emails)
   - `DISCORD_TOKEN` : The Discord token of the bot
-  - `MAXMIND_LICENSE_KEY` : The license key to use the MaxMind GeoLite2 database
 
   You can also customize hardcoded values like these :
   - `TCP_DEBUG_ENABLED` : Fully logs the TCP packets

@@ -19,6 +19,20 @@ services:
       - "53:53/udp"
       - "53:53/tcp"
 
+  ea-sslv2-stunnel:
+    image: ghcr.io/a-blondel/ea-sslv2-stunnel/ea-sslv2-stunnel:latest
+    restart: unless-stopped
+    environment:
+      - SSL_SERVICES=pspnfs06:30980;pspnba06:30190;pspkok06:31570,31590;pspuefa06:31280,31290
+      - REDIRECT_IP=${TCP_HOST_IP}
+    ports:
+      - "30981:30981" # psp nfs06 ssl (ntsc)
+      - "30191:30191" # psp nba06 ssl (ntsc)
+      - "31571:31571" # psp kok03 ssl (pal)
+      - "31591:31591" # psp kok03 ssl (ntsc)
+      - "31281:31281" # psp worldcup06 ssl (ntsc)
+      - "31291:31291" # psp worldcup06 ssl (pal)
+
   ea-nation-server:
     image: ghcr.io/a-blondel/ea-nation-server/ea-nation-server:latest
     restart: unless-stopped
@@ -104,19 +118,16 @@ services:
       - "30081:30081" # psp madden09 ssl (pal)
       - "30090:30090" # psp madden09 tcp (ntsc)
       - "30091:30091" # psp madden09 ssl (ntsc)
+      - "30190:30190" # psp nba06 tcp (ntsc)
       - "30490:30490" # psp fifa09 tcp (global)
       - "30491:30491" # psp fifa09 ssl (global)
       - "30980:30980" # psp nfs06 tcp (global)
       - "30990:30990" # psp nfs09 tcp (global)
       - "30991:30991" # psp nfs09 ssl (global)
       - "31280:31280" # psp worldcup06 tcp (ntsc)
-      - "31281:31281" # psp worldcup06 ssl (ntsc)
       - "31290:31290" # psp worldcup06 tcp (pal)
-      - "31291:31291" # psp worldcup06 ssl (pal)
       - "31570:31570" # psp kok03 tcp (pal)
-      - "31571:31571" # psp kok03 ssl (pal)
       - "31590:31590" # psp kok03 tcp (ntsc)
-      - "31591:31591" # psp kok03 ssl (ntsc)
 
   mohh-gps:
     image: ghcr.io/a-blondel/mohh-gps-docker/mohh-gps-docker:latest
@@ -162,10 +173,6 @@ services:
       - REPORTS_PATH=/var/log/ea-nation/reports
       - ENABLE_BOT_ACTIVITY=true
       - ENABLE_EVENTS=true
-      - ENABLE_MAP=true
-      - MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY}
-      - MAP_TYPES=HEATMAP
-      - MAP_NAMES=false
     volumes:
       - app_logs:/var/log/ea-nation
 
