@@ -53,6 +53,8 @@ jobs:
         address=/pspnba08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspncaa07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnhl07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pcnfs06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs08.ea.com/${{ secrets.SERVER_IP }}

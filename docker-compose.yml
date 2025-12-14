@@ -23,9 +23,11 @@ services:
     image: ghcr.io/a-blondel/ea-sslv2-stunnel/ea-sslv2-stunnel:latest
     restart: unless-stopped
     environment:
-      - SSL_SERVICES=pspnfs06:30980;pspnba06:30190;pspkok06:31570,31590;pspuefa06:31280,31290
+      - SSL_SERVICES=ps2nfs06:30900;pcnfs06:30920;pspnfs06:30980;pspnba06:30190;pspkok06:31570,31590;pspuefa06:31280,31290
       - REDIRECT_IP=${TCP_HOST_IP}
     ports:
+      - "30901:30901" # ps2 nfs06 ssl (pal)
+      - "30921:30921" # pc nfs06 ssl (ntsc)
       - "30981:30981" # psp nfs06 ssl (ntsc)
       - "30191:30191" # psp nba06 ssl (ntsc)
       - "31571:31571" # psp kok03 ssl (pal)
@@ -121,6 +123,8 @@ services:
       - "30190:30190" # psp nba06 tcp (ntsc)
       - "30490:30490" # psp fifa09 tcp (global)
       - "30491:30491" # psp fifa09 ssl (global)
+      - "30900:30900" # ps2 nfs06 tcp (pal)
+      - "30920:30920" # pc nfs06 tcp (ntsc)
       - "30980:30980" # psp nfs06 tcp (global)
       - "30990:30990" # psp nfs09 tcp (global)
       - "30991:30991" # psp nfs09 ssl (global)
