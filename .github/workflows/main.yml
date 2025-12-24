@@ -2,12 +2,20 @@ name: EA Nation Server deployment pipeline
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        type: choice
+        options:
+          - vps
+          - ablondel
     branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ablondel
+    environment: ${{ github.event.inputs.environment }}
 
     steps:
 
@@ -99,6 +107,6 @@ jobs:
         script: |
           cd /var/www/ea-nation-server
           source .env
-          docker-compose down --remove-orphans
-          docker-compose pull
-          docker-compose up --build -d
+          docker compose down --remove-orphans
+          docker compose pull
+          docker compose up --build -d
