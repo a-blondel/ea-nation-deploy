@@ -180,6 +180,13 @@ services:
     volumes:
       - app_logs:/var/log/ea-nation
 
+  aemu-servers:
+    image: ghcr.io/a-blondel/aemu-servers/aemu-servers:latest
+    restart: unless-stopped
+    ports:
+      - "27312:27312"
+      - "27313:27313"
+
 volumes:
   db_data:
   app_logs:
