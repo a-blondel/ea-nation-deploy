@@ -45,7 +45,9 @@ jobs:
         address=/pspuefa07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspworldcup10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2fifa07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2fifa08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa09.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspkok06.ea.com/${{ secrets.SERVER_IP }}
