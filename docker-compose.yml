@@ -52,9 +52,19 @@ services:
       - LOGS=/var/log/ea-nation
     volumes:
       - app_logs:/var/log/ea-nation
+    networks:
+      - traefik-public
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ea-nation.rule=Host(`eahub.eu`)"
+      - "traefik.http.routers.ea-nation.entrypoints=web"
+      - "traefik.http.services.ea-nation.loadbalancer.server.port=8080"
+      - "traefik.docker.network=traefik-public"
     ports:
-      - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
-      - "8080:8080" # master server APIs
+      # Ports 80 et 8080 now under Traefik
+      # - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
+      # - "8080:8080" # master server APIs
       - "5000:5000" # buddy server (EA Messenger)
       - "10090:10090" # psp madden07 tcp (ntsc)
       - "10091:10091" # psp madden07 ssl (ntsc)
@@ -187,3 +197,9 @@ services:
 volumes:
   db_data:
   app_logs:
+
+networks:
+  traefik-public:
+    external: true
+  default:
+    driver: bridge
