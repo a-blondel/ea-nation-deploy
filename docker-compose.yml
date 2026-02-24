@@ -310,6 +310,32 @@ services:
   #   extra_hosts:
   #     - "pspmoh07.ea.com:${TCP_HOST_IP}"
 
+  nwc-server:
+    image: ghcr.io/a-blondel/nwc-server/nwc-server:latest
+    restart: unless-stopped
+    networks:
+      - traefik-public
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nwc-server.rule=Host(`nwc.eahub.eu`) || Host(`naswii.nintendowifi.net`)"
+      - "traefik.http.routers.nwc-server.entrypoints=web"
+      - "traefik.http.services.nwc-server.loadbalancer.server.port=80"
+      - "traefik.docker.network=traefik-public"
+
+  ea-tos-server:
+    image: ghcr.io/a-blondel/ea-tos-server/ea-tos-server:latest
+    restart: unless-stopped
+    networks:
+      - traefik-public
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ea-tos-server.rule=Host(`content.eahub.eu`) || Host(`tos.ea.com`)"
+      - "traefik.http.routers.ea-tos-server.entrypoints=web"
+      - "traefik.http.services.ea-tos-server.loadbalancer.server.port=80"
+      - "traefik.docker.network=traefik-public"
+
   ea-nation-bot:
     image: ghcr.io/ea-nation-hub/ea-nation-server/ea-nation-bot:latest
     restart: unless-stopped
