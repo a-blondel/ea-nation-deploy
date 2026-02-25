@@ -316,12 +316,6 @@ services:
     networks:
       - traefik-public
       - default
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nwc-server.rule=Host(`nwc.eahub.eu`) || Host(`naswii.nintendowifi.net`)"
-      - "traefik.http.routers.nwc-server.entrypoints=web"
-      - "traefik.http.services.nwc-server.loadbalancer.server.port=80"
-      - "traefik.docker.network=traefik-public"
 
   ea-tos-server:
     image: ghcr.io/a-blondel/ea-tos-server/ea-tos-server:latest
