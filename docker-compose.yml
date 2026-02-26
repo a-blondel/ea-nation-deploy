@@ -123,19 +123,8 @@ services:
       - QA_TESTERS_WHITELIST=${QA_TESTERS_WHITELIST}
     volumes:
       - app_logs:/var/log/ea-nation
-    networks:
-      - traefik-public
-      - default
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.ea-nation.rule=Host(`eahub.eu`)"
-      - "traefik.http.routers.ea-nation.entrypoints=web"
-      - "traefik.http.services.ea-nation.loadbalancer.server.port=8080"
-      - "traefik.docker.network=traefik-public"
     ports:
-      # Ports 80 et 8080 now under Traefik
-      # - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
-      # - "8080:8080" # master server APIs
+      # Ports 80 and 8080 no longer needed in prod (handled by separate services)
       - "5000:5000" # buddy server (EA Messenger)
       - "10000:10000" # ps2 madden07 tcp (ntsc)
       - "10001:10001" # ps2 madden07 ssl (ntsc)
