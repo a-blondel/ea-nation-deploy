@@ -39,6 +39,7 @@ services:
     image: ghcr.io/a-blondel/ea-nation-server/ea-nation-server:latest
     restart: unless-stopped
     environment:
+      - SPRING_PROFILES_ACTIVE=${ENVIRONMENT}
       - DB_URL=jdbc:postgresql://postgres-ea-nation:5432/${DB_NAME}
       - DB_USERNAME
       - DB_PASSWORD
@@ -46,10 +47,11 @@ services:
       - TCP_DEBUG_ENABLED=false
       - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
-      - DNS_NAME=http://${DNS_NAME}
+      - CONTENT_URL=http://{CONTENT_URL}
       - MAIL_USERNAME=${MAIL_USERNAME}
       - MAIL_PASSWORD=${MAIL_PASSWORD}
       - LOGS=/var/log/ea-nation
+      - HTTP_TUNNEL_ENABLED=${HTTP_TUNNEL_ENABLED}
     volumes:
       - app_logs:/var/log/ea-nation
     ports:

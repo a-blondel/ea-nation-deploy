@@ -24,6 +24,7 @@ jobs:
 
     - name: Generate .env
       run: |
+        echo ENVIRONMENT=${{ secrets.ENVIRONMENT }} >> .env
         echo DB_USERNAME=${{ secrets.DB_USERNAME }} >> .env
         echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
         echo DB_NAME=ea-nation_db >> .env
@@ -34,9 +35,11 @@ jobs:
         echo GPS_ADM_PWD=${{ secrets.GPS_ADM_PWD }} >> .env
         echo GPS_LOC=${{ secrets.GPS_LOC }} >> .env
         echo DNS_NAME=${{ secrets.DNS_NAME }} >> .env
+        echo CONTENT_URL=${{ secrets.CONTENT_URL }} >> .env
         echo MAIL_USERNAME=${{ secrets.MAIL_USERNAME }} >> .env
         echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
         echo DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} >> .env
+        echo HTTP_TUNNEL_ENABLED=${{ secrets.HTTP_TUNNEL_ENABLED }} >> .env
 
     - name: Generate dnsmasq.conf
       run: |
