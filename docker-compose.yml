@@ -36,7 +36,7 @@ services:
       - "31291:31291" # psp worldcup06 ssl (pal)
 
   ea-nation-server:
-    image: ghcr.io/a-blondel/ea-nation-server/ea-nation-server:latest
+    image: ghcr.io/a-blondel/ea-nation-server/ea-nation-gameserver:latest
     restart: unless-stopped
     environment:
       - SPRING_PROFILES_ACTIVE=${ENVIRONMENT}
@@ -47,7 +47,7 @@ services:
       - TCP_DEBUG_ENABLED=false
       - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
-      - CONTENT_URL=http://{CONTENT_URL}
+      - CONTENT_URL=http://${CONTENT_URL}
       - MAIL_USERNAME=${MAIL_USERNAME}
       - MAIL_PASSWORD=${MAIL_PASSWORD}
       - LOGS=/var/log/ea-nation
@@ -172,7 +172,7 @@ services:
       - "pspmoh07.ea.com:${TCP_HOST_IP}"
 
   ea-nation-bot:
-    image: ghcr.io/a-blondel/ea-nation-bot/ea-nation-bot:latest
+    image: ghcr.io/a-blondel/ea-nation-server/ea-nation-bot:latest
     restart: unless-stopped
     environment:
       - DB_URL=jdbc:postgresql://postgres-ea-nation:5432/${DB_NAME}
