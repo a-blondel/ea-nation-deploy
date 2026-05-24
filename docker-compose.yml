@@ -65,7 +65,7 @@ services:
       # ;ps2mm05:20700
       # ;ps2nhl05:20300
 
-      REDIRECT_IP=${TCP_HOST_IP}
+      REDIRECT_IP: ${TCP_HOST_IP}
     ports:
       - "10601:10601" # ps2 nascar07 ssl
       - "11001:11001" # ps2 ssx04 ssl
