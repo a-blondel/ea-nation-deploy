@@ -8,9 +8,8 @@ on:
         required: true
         type: choice
         options:
-          - vps
           - ablondel
-    branches: [ main ]
+          - vps
 
 jobs:
   deploy:
@@ -44,13 +43,55 @@ jobs:
     - name: Generate dnsmasq.conf
       run: |
         cat << EOF > dns-server/dnsmasq.conf
-        address=/pspuefa06.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspuefa07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspworldcup10.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspfifa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pcnfs06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2afl06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2afl07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2burnout05.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2burnout06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2coach06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2fifa06.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2fifa07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspfifa08.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2fifa08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2kok06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2madden06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2madden07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2madden08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2madden09.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2madden10.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2marvel06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2mm06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2mm07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2mvp06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2mvp07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nascar06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nascar07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nascar08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nascar09.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nba06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nba07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nba08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nbastreet05.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ncaa05.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ncaa06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ncaa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ncaa08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ncaa09.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ncaa10.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nflstreet05.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nflstreet07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nfs05.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nfs06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nhl06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nhl07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nhl08.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2sims04.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2ssx04.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2tw06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2uefa05.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2uefa06.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2uefa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspfifa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspfifa08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa09.ea.com/${{ secrets.SERVER_IP }}
         address=/pspfifa10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspkok06.ea.com/${{ secrets.SERVER_IP }}
@@ -60,21 +101,22 @@ jobs:
         address=/pspmadden10.ea.com/${{ secrets.SERVER_IP }}
         address=/pspmoh07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspmoh08.ea.com/${{ secrets.SERVER_IP }}
-        address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnba06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnba07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnba08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspncaa07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pspnhl07.ea.com/${{ secrets.SERVER_IP }}
-        address=/pcnfs06.ea.com/${{ secrets.SERVER_IP }}
-        address=/ps2nfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs07.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs08.ea.com/${{ secrets.SERVER_IP }}
         address=/pspnfs09.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspnhl07.ea.com/${{ secrets.SERVER_IP }}
         address=/psptw07.ea.com/${{ secrets.SERVER_IP }}
         address=/psptw08.ea.com/${{ secrets.SERVER_IP }}
         address=/psptw10.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspuefa06.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspuefa07.ea.com/${{ secrets.SERVER_IP }}
+        address=/pspworldcup10.ea.com/${{ secrets.SERVER_IP }}
+        address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
         address=/tos.ea.com/${{ secrets.SERVER_IP }}
         address=/naswii.nintendowifi.net/${{ secrets.SERVER_IP }}
         EOF
