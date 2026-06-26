@@ -314,7 +314,7 @@ services:
       - default
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ea-tos-server.rule=Host(`content.eahub.eu`) || Host(`tos.ea.com`)"
+      - "traefik.http.routers.ea-tos-server.rule=Host(`content.eahub.eu`) || Host(`tos.ea.com`) || Host(`msgconn.beta.ea.com`)"
       - "traefik.http.routers.ea-tos-server.entrypoints=web"
       - "traefik.http.services.ea-tos-server.loadbalancer.server.port=80"
       - "traefik.docker.network=traefik-public"
