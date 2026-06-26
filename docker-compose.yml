@@ -9,8 +9,8 @@ services:
       - PGDATA=/var/lib/postgresql/data/ea-nation
     volumes:
       - db_data:/var/lib/postgresql/data
-    # ports:
-    #   - "${DB_PORT}:5432"
+    ports:
+      - "127.0.0.1:${DB_PORT}:5432"
 
   dns:
     build: ./dns-server
@@ -35,7 +35,7 @@ services:
         ps2nascar07:10600;
         ps2fifa06:30400;
         ps2ssx04:11000;
-        ps2marvel06:31700;
+        ps2marvel06:31700,31720;
         ps2afl06:31400;
         ps2afl07:12400;
         ps2burnout05:21800;
@@ -97,6 +97,7 @@ services:
       - "31571:31571" # psp kok06 ssl (pal)
       - "31591:31591" # psp kok06 ssl (ntsc)
       - "31701:31701" # ps2 marvel06 ssl
+      - "31721:31721" # ps2 marvel06 ssl (pal)
       - "31801:31801" # ps2 burnout06 ssl
 
   ea-nation-server:
@@ -122,14 +123,20 @@ services:
       - "80:80" # http services through Netty tunnel : EA ToS + Nintendo WFC (NWC)
       - "8080:8080" # master server APIs
       - "5000:5000" # buddy server (EA Messenger)
+      - "10000:10000" # ps2 madden07 tcp (ntsc)
+      - "10001:10001" # ps2 madden07 ssl (ntsc)
       - "10090:10090" # psp madden07 tcp (ntsc)
       - "10091:10091" # psp madden07 ssl (ntsc)
+      - "10100:10100" # ps2 nba07 tcp (ntsc)
+      - "10101:10101" # ps2 nba07 ssl (ntsc)
       - "10190:10190" # psp nba07 tcp (ntsc)
       - "10191:10191" # psp nba07 ssl (ntsc)
       - "10280:10280" # psp tw07 tcp (pal)
       - "10281:10281" # psp tw07 ssl (pal)
       - "10290:10290" # psp tw07 tcp (ntsc)
       - "10291:10291" # psp tw07 ssl (ntsc)
+      - "10300:10300" # ps2 nhl07 tcp (ntsc)
+      - "10301:10301" # ps2 nhl07 ssl (ntsc)
       - "10390:10390" # psp nhl07 tcp (global)
       - "10391:10391" # psp nhl07 ssl (global)
       - "10400:10400" # ps2 fifa07 tcp (global)
@@ -138,34 +145,54 @@ services:
       - "10481:10481" # psp fifa07 ssl (pal)
       - "10490:10490" # psp fifa07 tcp (pal)
       - "10491:10491" # psp fifa07 ssl (pal)
+      - "10500:10500" # PS2 ncaa07 tcp (ntsc)
+      - "10501:10501" # PS2 ncaa07 ssl (ntsc)
       - "10580:10580" # psp ncaa07 tcp (ntsc-1)
       - "10581:10581" # psp ncaa07 ssl (ntsc-1)
       - "10590:10590" # psp ncaa07 tcp (ntsc-2)
       - "10591:10591" # psp ncaa07 ssl (ntsc-2)
+      - "10600:10600" # ps2 nascar07 tcp (ntsc)
+      - "10700:10700" # ps2 mm07 tcp (ntsc)
+      - "10701:10701" # ps2 mm07 ssl (ntsc)
+      - "10800:10800" # ps2 mvp07 tcp (ntsc)
+      - "10801:10801" # ps2 mvp07 ssl (ntsc)
       - "10980:10980" # psp nfs07 tcp (pal)
       - "10981:10981" # psp nfs07 ssl (pal)
       - "10990:10990" # psp nfs07 tcp (ntsc)
-      - "10991:10991" # psp nfs07 ssl (ntsc
+      - "10991:10991" # psp nfs07 ssl (ntsc)
+      - "11100:11100" # ps2 sims04 tcp (ntsc)
       - "11180:11180" # psp moh07 tcp (pal)
       - "11181:11181" # psp moh07 ssl (pal)
       - "11190:11190" # psp moh07 tcp (ntsc)
       - "11191:11191" # psp moh07 ssl (ntsc)
+      - "11200:11200" # ps2 uefa07 tcp (ntsc)
+      - "11201:11201" # ps2 uefa07 ssl (ntsc)
       - "11270:11270" # psp uefa07 tcp (global)
       - "11271:11271" # psp uefa07 ssl (global)
+      - "20000:20000" # ps2 madden08 tcp (ntsc)
+      - "20001:20001" # ps2 madden08 ssl (ntsc)
       - "20080:20080" # psp madden08 tcp (pal)
       - "20081:20081" # psp madden08 ssl (pal)
       - "20090:20090" # psp madden08 tcp (ntsc)
       - "20091:20091" # psp madden08 ssl (ntsc)
+      - "20100:20100" # ps2 nba08 tcp (ntsc)
+      - "20101:20101" # ps2 nba08 ssl (ntsc)
       - "20190:20190" # psp nba08 tcp (ntsc)
       - "20191:20191" # psp nba08 ssl (ntsc)
       - "20280:20280" # psp tw08 tcp (pal)
       - "20281:20281" # psp tw08 ssl (pal)
       - "20290:20290" # psp tw08 tcp (ntsc)
       - "20291:20291" # psp tw08 ssl (ntsc)
+      - "20300:20300" # ps2 nhl08 tcp (ntsc)
+      - "20301:20301" # ps2 nhl08 ssl (ntsc)
       - "20400:20400" # ps2 fifa08 tcp (global)
       - "20401:20401" # ps2 fifa08 ssl (global)
       - "20490:20490" # psp fifa08 tcp (global)
       - "20491:20491" # psp fifa08 ssl (global)
+      - "20500:20500" # ps2 ncaa08 tcp (ntsc)
+      - "20501:20501" # ps2 ncaa08 ssl (ntsc
+      - "20600:20600" # ps2 nascar08 tcp (ntsc)
+      - "20601:20601" # ps2 nascar08 ssl (ntsc)
       - "20980:20980" # psp nfs08 tcp (pal)
       - "20981:20981" # psp nfs08 ssl (pal)
       - "20990:20990" # psp nfs08 tcp (ntsc)
@@ -178,30 +205,54 @@ services:
       - "21171:21171" # wii moh08 ssl (pal)
       - "21120:21120" # wii moh08 tcp (ntsc)
       - "21121:21121" # wii moh08 ssl (ntsc)
+      - "25000:25000" # ps2 madden10 tcp (ntsc)
+      - "25001:25001" # ps2 madden10 ssl (ntsc)
       - "25090:25090" # psp madden10 tcp (ntsc)
       - "25091:25091" # psp madden10 ssl (ntsc)
       - "25290:25290" # psp tw10 tcp (global)
       - "25291:25291" # psp tw10 ssl (global)
       - "25490:25490" # psp fifa10 tcp (global)
       - "25491:25491" # psp fifa10 ssl (global)
+      - "25500:25500" # ps2 ncaa10 tcp (ntsc)
+      - "25501:25501" # ps2 ncaa10 ssl (ntsc)
       - "28390:28390" # psp worldcup10 tcp (global)
       - "28391:28391" # psp worldcup10 ssl (global)
+      - "30000:30000" # ps2 madden09 tcp (ntsc)
+      - "30001:30001" # ps2 madden09 ssl (ntsc)
       - "30080:30080" # psp madden09 tcp (pal)
       - "30081:30081" # psp madden09 ssl (pal)
       - "30090:30090" # psp madden09 tcp (ntsc)
       - "30091:30091" # psp madden09 ssl (ntsc)
+      - "30100:30100" # ps2 nba06 tcp (ntsc)
       - "30190:30190" # psp nba06 tcp (ntsc)
+      - "30300:30300" # ps2 nhl06 tcp (ntsc)
+      - "30400:30400" # ps2 fifa06 tcp (global)
       - "30490:30490" # psp fifa09 tcp (global)
       - "30491:30491" # psp fifa09 ssl (global)
+      - "30500:30500" # ps2 ncaa09 tcp (ntsc)
+      - "30501:30501" # ps2 ncaa09 ssl (ntsc)
+      - "30600:30600" # ps2 nascar09 tcp (ntsc)
+      - "30601:30601" # ps2 nascar09 ssl (ntsc)
+      - "30700:30700" # ps2 mm06 tcp (ntsc)
+      - "30800:30800" # ps2 mvp06 tcp (ntsc)
       - "30900:30900" # ps2 nfs06 tcp (pal)
       #- "30920:30920" # pc nfs06 tcp (ntsc)
       - "30980:30980" # psp nfs06 tcp (global)
       - "30990:30990" # psp nfs09 tcp (global)
       - "30991:30991" # psp nfs09 ssl (global)
+      - "31200:31200" # ps2 worldcup06 tcp (global)
       - "31280:31280" # psp worldcup06 tcp (ntsc)
       - "31290:31290" # psp worldcup06 tcp (pal)
+      - "31300:31300" # ps2 coach06 tcp (ntsc)
+      - "31400:31400" # ps2 afl06 tcp (ntsc)
+      - "31500:31500" # ps2 kok06 tcp (ntsc)
       - "31570:31570" # psp kok03 tcp (pal)
       - "31590:31590" # psp kok03 tcp (ntsc)
+      - "31700:31700" # ps2 marvel06 tcp (ntsc)
+      - "31720:31720" # ps2 marvel06 tcp (pal)
+      - "40000:40000" # ps2 madden06 tcp (ntsc)
+      - "40500:40500" # ps2 ncaa06 tcp (ntsc)
+      - "40600:40600" # ps2 nascar06 tcp (ntsc)
 
 # Disabled service (until demangler support is added)
   # mohh-gps:

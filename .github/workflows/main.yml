@@ -118,6 +118,7 @@ jobs:
         address=/pspworldcup10.ea.com/${{ secrets.SERVER_IP }}
         address=/wiimoh08.ea.com/${{ secrets.SERVER_IP }}
         address=/tos.ea.com/${{ secrets.SERVER_IP }}
+        address=/msgconn.beta.ea.com/${{ secrets.SERVER_IP }}
         address=/naswii.nintendowifi.net/${{ secrets.SERVER_IP }}
         EOF
 
