@@ -304,6 +304,7 @@ services:
       - DB_PASSWORD
       - DNS_NAME=${DNS_NAME}
       - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_WEBHOOK_REPORTS=${DISCORD_WEBHOOK_REPORTS}
       - REPORTS_PATH=/var/log/ea-nation/reports
       - ENABLE_BOT_ACTIVITY=true
       - ENABLE_EVENTS=true

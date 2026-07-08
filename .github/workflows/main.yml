@@ -38,6 +38,7 @@ jobs:
         echo MAIL_USERNAME=${{ secrets.MAIL_USERNAME }} >> .env
         echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
         echo DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} >> .env
+        echo DISCORD_WEBHOOK_REPORTS=${{ secrets.DISCORD_WEBHOOK_REPORTS }} >> .env
         echo HTTP_TUNNEL_ENABLED=${{ secrets.HTTP_TUNNEL_ENABLED }} >> .env
 
     - name: Generate dnsmasq.conf

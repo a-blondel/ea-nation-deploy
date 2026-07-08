@@ -23,6 +23,7 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `MAIL_USERNAME` : The username of the email account used to send emails (for account recovery emails)
   - `MAIL_PASSWORD` : The password of the email account used to send emails (for account recovery emails)
   - `DISCORD_TOKEN` : The Discord token of the bot
+  - `DISCORD_WEBHOOK_REPORTS` : The Discord webhook URL to send reports to
   - `HTTP_TUNNEL_ENABLED` : Whether to enable the HTTP tunnel (used for environments without subdomains, requiring to host all HTTP services on the same server and port)
 
   You can also customize hardcoded values like these :
