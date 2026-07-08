@@ -25,7 +25,7 @@ services:
     environment:
       SSL_SERVICES: >-
         ps2nfs05:20900;
-        pcnfs05:20920;
+        pcnfs05:20920,20970;
         ps2nfs06:30900;
         pcnfs06:30920;
         pspnfs06:30980;
@@ -75,6 +75,7 @@ services:
       #- "20501:20501" # ps2 ncaa05 ssl
       - "20901:20901" # ps2 nfs05 ssl
       - "20921:20921" # pc nfs05 ssl
+      - "20971:20971" # pc nfs05 ssl
       - "21001:21001" # ps2 nbastreet05 ssl
       - "21301:21301" # ps2 nflstreet05 ssl
       - "21801:21801" # ps2 burnout05 ssl
@@ -156,6 +157,7 @@ services:
       - "10701:10701" # ps2 mm07 ssl (ntsc)
       - "10800:10800" # ps2 mvp07 tcp (ntsc)
       - "10801:10801" # ps2 mvp07 ssl (ntsc)
+      - "10900:10900" # ps2 nfs07 tcp (global)
       - "10980:10980" # psp nfs07 tcp (pal)
       - "10981:10981" # psp nfs07 ssl (pal)
       - "10990:10990" # psp nfs07 tcp (ntsc)
@@ -193,6 +195,7 @@ services:
       - "20501:20501" # ps2 ncaa08 ssl (ntsc
       - "20600:20600" # ps2 nascar08 tcp (ntsc)
       - "20601:20601" # ps2 nascar08 ssl (ntsc)
+      - "20900:20900" # ps2 nfs05 tcp (global)
       - "20980:20980" # psp nfs08 tcp (pal)
       - "20981:20981" # psp nfs08 ssl (pal)
       - "20990:20990" # psp nfs08 tcp (ntsc)
@@ -205,6 +208,9 @@ services:
       - "21171:21171" # wii moh08 ssl (pal)
       - "21120:21120" # wii moh08 tcp (ntsc)
       - "21121:21121" # wii moh08 ssl (ntsc)
+      - "21800:21800" # ps2 burnout08 tcp (global)
+      - "21840:21840" # pc burnout08 tcp (global)
+      - "21841:21841" # pc burnout08 ssl (global)
       - "25000:25000" # ps2 madden10 tcp (ntsc)
       - "25001:25001" # ps2 madden10 ssl (ntsc)
       - "25090:25090" # psp madden10 tcp (ntsc)
@@ -236,7 +242,7 @@ services:
       - "30700:30700" # ps2 mm06 tcp (ntsc)
       - "30800:30800" # ps2 mvp06 tcp (ntsc)
       - "30900:30900" # ps2 nfs06 tcp (pal)
-      #- "30920:30920" # pc nfs06 tcp (ntsc)
+      - "30920:30920" # pc nfs06 tcp (ntsc)
       - "30980:30980" # psp nfs06 tcp (global)
       - "30990:30990" # psp nfs09 tcp (global)
       - "30991:30991" # psp nfs09 ssl (global)
@@ -250,6 +256,7 @@ services:
       - "31590:31590" # psp kok03 tcp (ntsc)
       - "31700:31700" # ps2 marvel06 tcp (ntsc)
       - "31720:31720" # ps2 marvel06 tcp (pal)
+      - "31800:31800" # ps2 burnout06 tcp (global)
       - "40000:40000" # ps2 madden06 tcp (ntsc)
       - "40500:40500" # ps2 ncaa06 tcp (ntsc)
       - "40600:40600" # ps2 nascar06 tcp (ntsc)

@@ -43,6 +43,8 @@ jobs:
     - name: Generate dnsmasq.conf
       run: |
         cat << EOF > dns-server/dnsmasq.conf
+        address=/pcburnout08.ea.com/${{ secrets.SERVER_IP }}
+        address=/pcnfs05.ea.com/${{ secrets.SERVER_IP }}
         address=/pcnfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2afl06.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2afl07.ea.com/${{ secrets.SERVER_IP }}
@@ -79,6 +81,7 @@ jobs:
         address=/ps2ncaa10.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2nflstreet05.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2nflstreet07.ea.com/${{ secrets.SERVER_IP }}
+        address=/ps2nfs04.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2nfs05.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2nfs06.ea.com/${{ secrets.SERVER_IP }}
         address=/ps2nhl06.ea.com/${{ secrets.SERVER_IP }}
