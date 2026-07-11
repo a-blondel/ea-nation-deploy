@@ -39,11 +39,14 @@ jobs:
         echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
         echo DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} >> .env
         echo DISCORD_WEBHOOK_REPORTS=${{ secrets.DISCORD_WEBHOOK_REPORTS }} >> .env
+        echo DISCORD_WEBHOOK_MONITORING=${{ secrets.DISCORD_WEBHOOK_MONITORING }} >> .env
+        echo DISCORD_WEBHOOK_ALERTS=${{ secrets.DISCORD_WEBHOOK_ALERTS }} >> .env
         echo HTTP_TUNNEL_ENABLED=${{ secrets.HTTP_TUNNEL_ENABLED }} >> .env
 
     - name: Generate dnsmasq.conf
       run: |
         cat << EOF > dns-server/dnsmasq.conf
+        no-resolv
         address=/pcburnout08.ea.com/${{ secrets.SERVER_IP }}
         address=/pcnfs05.ea.com/${{ secrets.SERVER_IP }}
         address=/pcnfs06.ea.com/${{ secrets.SERVER_IP }}

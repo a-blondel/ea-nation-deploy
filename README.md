@@ -23,7 +23,9 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `MAIL_USERNAME` : The username of the email account used to send emails (for account recovery emails)
   - `MAIL_PASSWORD` : The password of the email account used to send emails (for account recovery emails)
   - `DISCORD_TOKEN` : The Discord token of the bot
-  - `DISCORD_WEBHOOK_REPORTS` : The Discord webhook URL to send reports to
+  - `DISCORD_WEBHOOK_REPORTS` : The Discord webhook URL to send game reports to
+  - `DISCORD_WEBHOOK_MONITORING` : The Discord webhook URL to send periodic health reports to
+  - `DISCORD_WEBHOOK_ALERTS` : The Discord webhook URL to send critical resource alerts to
   - `HTTP_TUNNEL_ENABLED` : Whether to enable the HTTP tunnel (used for environments without subdomains, requiring to host all HTTP services on the same server and port)
 
   You can also customize hardcoded values like these :
@@ -32,3 +34,34 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `GPS_PORT` : The port of the first GPS server instance, defaults to 3658. Every instance will use a port starting from this one
   - `GPS_INSTANCE` : The number of GPS server instances to run, defaults to 1
 - Run the workflow
+
+## Server monitoring
+
+The `monitor/health-report.sh` script sends health reports and alerts to Discord, with per-container RAM and CPU breakdown. It loads `DISCORD_WEBHOOK_MONITORING` and `DISCORD_WEBHOOK_ALERTS` automatically from the deployed `.env` file.
+
+### Setup
+
+Make the script executable after deployment :
+
+```bash
+chmod +x /var/www/ea-nation-server/monitor/health-report.sh
+```
+
+Then configure the cron jobs (`crontab -e`) :
+
+```cron
+# Health report every hour
+1 * * * * bash /var/www/ea-nation-server/monitor/health-report.sh
+
+# Alert check every 15 minutes (silent if nothing to report)
+*/15 * * * * bash /var/www/ea-nation-server/monitor/health-report.sh --alert
+```
+
+### Behavior
+
+| Mode | Trigger | Discord channel | Mention |
+|---|---|---|---|
+| Report | Every hour | `#monitoring` | None |
+| Alert | Every 15 min | `#alerts` | `@here` |
+
+Alerts are only posted when RAM or disk usage exceeds 85%. The script exits silently otherwise.
