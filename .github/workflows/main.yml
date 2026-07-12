@@ -47,6 +47,8 @@ jobs:
       run: |
         cat << EOF > dns-server/dnsmasq.conf
         no-resolv
+        server=/ea.com/1.1.1.1
+        server=/eahub.eu/1.1.1.1
         address=/pcburnout08.ea.com/${{ secrets.SERVER_IP }}
         address=/pcnfs05.ea.com/${{ secrets.SERVER_IP }}
         address=/pcnfs06.ea.com/${{ secrets.SERVER_IP }}
