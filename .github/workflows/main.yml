@@ -130,6 +130,12 @@ jobs:
         address=/msgconn.beta.ea.com/${{ secrets.SERVER_IP }}
         address=/naswii.nintendowifi.net/${{ secrets.SERVER_IP }}
         EOF
+        DNAS_EU_IP="${{ secrets.DNAS_EU_IP }}"
+        DNAS_JP_IP="${{ secrets.DNAS_JP_IP }}"
+        DNAS_US_IP="${{ secrets.DNAS_US_IP }}"
+        if [ -n "$DNAS_EU_IP" ]; then echo "address=/gate1.eu.dnas.playstation.org/$DNAS_EU_IP" >> dns-server/dnsmasq.conf; fi
+        if [ -n "$DNAS_JP_IP" ]; then echo "address=/gate1.jp.dnas.playstation.org/$DNAS_JP_IP" >> dns-server/dnsmasq.conf; fi
+        if [ -n "$DNAS_US_IP" ]; then echo "address=/gate1.us.dnas.playstation.org/$DNAS_US_IP" >> dns-server/dnsmasq.conf; fi
 
     - name: Clean remote directory
       uses: appleboy/ssh-action@master

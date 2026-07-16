@@ -27,6 +27,9 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `DISCORD_WEBHOOK_MONITORING` : The Discord webhook URL to send periodic health reports to
   - `DISCORD_WEBHOOK_ALERTS` : The Discord webhook URL to send critical resource alerts to
   - `HTTP_TUNNEL_ENABLED` : Whether to enable the HTTP tunnel (used for environments without subdomains, requiring to host all HTTP services on the same server and port)
+  - `DNAS_EU_IP` : The IP to redirect the EU PlayStation DNAS gateway (`gate1.eu.dnas.playstation.org`) to
+  - `DNAS_JP_IP` : The IP to redirect the JP PlayStation DNAS gateway (`gate1.jp.dnas.playstation.org`) to
+  - `DNAS_US_IP` : The IP to redirect the US PlayStation DNAS gateway (`gate1.us.dnas.playstation.org`) to
 
   You can also customize hardcoded values like these :
   - `TCP_DEBUG_ENABLED` : Fully logs the TCP packets
