@@ -110,7 +110,9 @@ services:
       - DB_USERNAME
       - DB_PASSWORD
       - TCP_HOST_IP
-      - TCP_DEBUG_ENABLED=false
+      - TCP_DEBUG_BUDDY=${TCP_DEBUG_BUDDY}
+      - TCP_DEBUG_ENABLED=${TCP_DEBUG_ENABLED}
+      - TCP_DEBUG_INLINE=${TCP_DEBUG_INLINE}
       - TCP_DEBUG_EXCLUSIONS=~png,+snp
       - SSL_DEBUG_ENABLED=false
       - CONTENT_URL=http://${CONTENT_URL}

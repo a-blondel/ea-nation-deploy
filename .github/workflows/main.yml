@@ -42,6 +42,9 @@ jobs:
         echo DISCORD_WEBHOOK_MONITORING=${{ secrets.DISCORD_WEBHOOK_MONITORING }} >> .env
         echo DISCORD_WEBHOOK_ALERTS=${{ secrets.DISCORD_WEBHOOK_ALERTS }} >> .env
         echo HTTP_TUNNEL_ENABLED=${{ secrets.HTTP_TUNNEL_ENABLED }} >> .env
+        echo TCP_DEBUG_BUDDY=${{ secrets.TCP_DEBUG_BUDDY }} >> .env
+        echo TCP_DEBUG_ENABLED=${{ secrets.TCP_DEBUG_ENABLED }} >> .env
+        echo TCP_DEBUG_INLINE=${{ secrets.TCP_DEBUG_INLINE }} >> .env
 
     - name: Generate dnsmasq.conf
       run: |
