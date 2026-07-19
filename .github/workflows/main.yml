@@ -28,7 +28,7 @@ jobs:
         echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
         echo DB_NAME=ea-nation_db >> .env
         echo DB_PORT=5432 >> .env
-        echo TCP_HOST_IP=${{ secrets.SERVER_IP }} >> .env
+        echo SERVER_IP=${{ secrets.SERVER_IP }} >> .env
         echo GPS_NAME=${{ secrets.GPS_NAME }} >> .env
         echo GPS_PWD=${{ secrets.GPS_PWD }} >> .env
         echo GPS_ADM_PWD=${{ secrets.GPS_ADM_PWD }} >> .env

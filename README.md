@@ -27,6 +27,7 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `DISCORD_WEBHOOK_MONITORING` : The Discord webhook URL to send periodic health reports to
   - `DISCORD_WEBHOOK_ALERTS` : The Discord webhook URL to send critical resource alerts to
   - `HTTP_TUNNEL_ENABLED` : Whether to enable the HTTP tunnel (used for environments without subdomains, requiring to host all HTTP services on the same server and port)
+  - `QA_TESTERS_WHITELIST` : A comma separated list of persona allowed to connect (only use in restricted environments, everyone else won't be able to connect)
   - `DNAS_EU_IP` : The IP to redirect the EU PlayStation DNAS gateway (`gate1.eu.dnas.playstation.org`) to
   - `DNAS_JP_IP` : The IP to redirect the JP PlayStation DNAS gateway (`gate1.jp.dnas.playstation.org`) to
   - `DNAS_US_IP` : The IP to redirect the US PlayStation DNAS gateway (`gate1.us.dnas.playstation.org`) to
@@ -34,6 +35,8 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   You can also customize hardcoded values like these :
   - `TCP_DEBUG_ENABLED` : Fully logs the TCP packets
   - `TCP_DEBUG_EXCLUSIONS` : Define which packets not to log (e.g. they are too verbose)
+  - `ARIES_TRUSTED_PROXIES` : IPs/CIDRs of the SSLv2 stunnel as seen by the server, trusted for the encrypted `@tic`/`@dir` phase (hardcoded in `docker-compose.yml` to `${SERVER_IP},172.16.0.0/12`). Loopback is always trusted. The `SERVER_IP` part covers home servers where the stunnel hairpins via the public IP; the `172.16.0.0/12` part covers Docker-hosted setups (e.g. VPS) where the stunnel is masqueraded to the bridge gateway. Narrow the CIDR only if your LAN overlaps it.
+  - `ARIES_TRUST_PRIVATE_NETWORKS` : When `true`, trusts **any** private/internal source IP (RFC1918 + link-local) as a proxy, since real game clients always come from public IPs (zero-config alternative to `ARIES_TRUSTED_PROXIES`). Defaults to `false`. **Do not enable** if clients can reach this server from a private network (same LAN, or via a VPN/tunnel whose endpoint is local), as they could then bypass the encryption guard.
   - `GPS_PORT` : The port of the first GPS server instance, defaults to 3658. Every instance will use a port starting from this one
   - `GPS_INSTANCE` : The number of GPS server instances to run, defaults to 1
 - Run the workflow
