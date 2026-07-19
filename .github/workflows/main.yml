@@ -45,6 +45,7 @@ jobs:
         echo TCP_DEBUG_BUDDY=${{ secrets.TCP_DEBUG_BUDDY }} >> .env
         echo TCP_DEBUG_ENABLED=${{ secrets.TCP_DEBUG_ENABLED }} >> .env
         echo TCP_DEBUG_INLINE=${{ secrets.TCP_DEBUG_INLINE }} >> .env
+        echo QA_TESTERS_WHITELIST=${{ secrets.QA_TESTERS_WHITELIST }} >> .env
 
     - name: Generate dnsmasq.conf
       run: |

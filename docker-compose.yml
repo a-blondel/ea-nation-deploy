@@ -120,6 +120,7 @@ services:
       - MAIL_PASSWORD=${MAIL_PASSWORD}
       - LOGS=/var/log/ea-nation
       - HTTP_TUNNEL_ENABLED=${HTTP_TUNNEL_ENABLED}
+      - QA_TESTERS_WHITELIST=${QA_TESTERS_WHITELIST}
     volumes:
       - app_logs:/var/log/ea-nation
     ports:
