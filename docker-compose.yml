@@ -245,6 +245,7 @@ services:
       - "30190:30190" # psp nba06 tcp (ntsc)
       - "30300:30300" # ps2 nhl06 tcp (ntsc)
       - "30400:30400" # ps2 fifa06 tcp (global)
+      - "30480:30480" # psp fifa06 tcp (global)
       - "30490:30490" # psp fifa09 tcp (global)
       - "30491:30491" # psp fifa09 ssl (global)
       - "30500:30500" # ps2 ncaa09 tcp (ntsc)
@@ -270,6 +271,7 @@ services:
       - "31720:31720" # ps2 marvel06 tcp (pal)
       - "31800:31800" # ps2 burnout06 tcp (global)
       - "40000:40000" # ps2 madden06 tcp (ntsc)
+      - "40090:40090" # psp madden06 tcp (ntsc)
       - "40500:40500" # ps2 ncaa06 tcp (ntsc)
       - "40600:40600" # ps2 nascar06 tcp (ntsc)
 
