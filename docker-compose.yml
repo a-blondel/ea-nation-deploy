@@ -146,6 +146,7 @@ services:
       - "10281:10281" # psp tw07 ssl (pal)
       - "10290:10290" # psp tw07 tcp (ntsc)
       - "10291:10291" # psp tw07 ssl (ntsc)
+      - "12400:12400" # ps2 afl07 tcp (ntsc)
       - "10300:10300" # ps2 nhl07 tcp (ntsc)
       - "10301:10301" # ps2 nhl07 ssl (ntsc)
       - "10390:10390" # psp nhl07 tcp (global)
