@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
     environment:
       SSL_SERVICES: >-
-        ps2nfs05:20900;
+        ps2nfs05:20900,20950;
         pcnfs05:20920,20970;
         ps2nfs06:30900;
         pcnfs06:30920;
@@ -73,8 +73,9 @@ services:
       - "12401:12401" # ps2 afl07 ssl
       - "20481:20481" # ps2 uefa05 ssl
       #- "20501:20501" # ps2 ncaa05 ssl
-      - "20901:20901" # ps2 nfs05 ssl
+      - "20901:20901" # ps2 nfs05 ssl (ntsc)
       - "20921:20921" # pc nfs05 ssl (ntsc)
+      - "20951:20951" # ps2 nfs05 ssl (pal)
       - "20971:20971" # pc nfs05 ssl (pal)
       - "21001:21001" # ps2 nbastreet05 ssl
       - "21301:21301" # ps2 nflstreet05 ssl
@@ -209,7 +210,8 @@ services:
       - "20501:20501" # ps2 ncaa08 ssl (ntsc
       - "20600:20600" # ps2 nascar08 tcp (ntsc)
       - "20601:20601" # ps2 nascar08 ssl (ntsc)
-      - "20900:20900" # ps2 nfs05 tcp (global)
+      - "20900:20900" # ps2 nfs05 tcp (ntsc)
+      - "20950:20950" # ps2 nfs05 tcp (pal)
       - "20920:20920" # pc nfs05 tcp (ntsc)
       - "20970:20970" # pc nfs05 tcp (pal)
       - "20980:20980" # psp nfs08 tcp (pal)
