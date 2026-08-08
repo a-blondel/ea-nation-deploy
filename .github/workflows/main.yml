@@ -24,6 +24,7 @@ jobs:
     - name: Generate .env
       env:
         QA_TESTERS_WHITELIST: ${{ secrets.QA_TESTERS_WHITELIST }}
+        REBROADCASTER_API_KEY: ${{ secrets.REBROADCASTER_API_KEY }}
       run: |
         echo ENVIRONMENT=${{ secrets.ENVIRONMENT }} >> .env
         echo DB_USERNAME=${{ secrets.DB_USERNAME }} >> .env
@@ -47,7 +48,10 @@ jobs:
         echo TCP_DEBUG_BUDDY=${{ secrets.TCP_DEBUG_BUDDY }} >> .env
         echo TCP_DEBUG_ENABLED=${{ secrets.TCP_DEBUG_ENABLED }} >> .env
         echo TCP_DEBUG_INLINE=${{ secrets.TCP_DEBUG_INLINE }} >> .env
+        echo REBROADCASTER_ENABLED=${{ secrets.REBROADCASTER_ENABLED }} >> .env
+        echo REBROADCASTER_URL=${{ secrets.REBROADCASTER_URL }} >> .env
         printf "QA_TESTERS_WHITELIST='%s'\n" "$QA_TESTERS_WHITELIST" >> .env
+        printf "REBROADCASTER_API_KEY='%s'\n" "$REBROADCASTER_API_KEY" >> .env
 
     - name: Generate dnsmasq.conf
       run: |

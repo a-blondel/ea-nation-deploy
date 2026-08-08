@@ -28,6 +28,9 @@ A docker compose project designed to automate the deployment of [EA Nation serve
   - `DISCORD_WEBHOOK_ALERTS` : The Discord webhook URL to send critical resource alerts to
   - `HTTP_TUNNEL_ENABLED` : Whether to enable the HTTP tunnel (used for environments without subdomains, requiring to host all HTTP services on the same server and port)
   - `QA_TESTERS_WHITELIST` : A comma separated list of persona allowed to connect (only use in restricted environments, everyone else won't be able to connect)
+  - `REBROADCASTER_ENABLED` : Whether to relay P2P traffic through the rebroadcaster instead of handing out the players' real IPs. Leave unset (defaults to `false`) if you don't run a relay
+  - `REBROADCASTER_URL` : Base URL of the rebroadcaster REST API
+  - `REBROADCASTER_API_KEY` : Bearer token sent to the rebroadcaster API
   - `DNAS_EU_IP` : The IP to redirect the EU PlayStation DNAS gateway (`gate1.eu.dnas.playstation.org`) to
   - `DNAS_JP_IP` : The IP to redirect the JP PlayStation DNAS gateway (`gate1.jp.dnas.playstation.org`) to
   - `DNAS_US_IP` : The IP to redirect the US PlayStation DNAS gateway (`gate1.us.dnas.playstation.org`) to
