@@ -226,7 +226,7 @@ services:
       - "21171:21171" # wii moh08 ssl (pal)
       - "21120:21120" # wii moh08 tcp (ntsc)
       - "21121:21121" # wii moh08 ssl (ntsc)
-      - "21800:21800" # ps2 burnout08 tcp (global)
+      - "21800:21800" # ps2 burnout05 tcp (global)
       - "21840:21840" # pc burnout08 tcp (global)
       - "21841:21841" # pc burnout08 ssl (global)
       - "25000:25000" # ps2 madden10 tcp (ntsc)
