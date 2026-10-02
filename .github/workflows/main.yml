@@ -19,7 +19,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Generate .env
       env:
@@ -153,7 +153,7 @@ jobs:
         if [ -n "$DNAS_US_IP" ]; then echo "address=/gate1.us.dnas.playstation.org/$DNAS_US_IP" >> dns-server/dnsmasq.conf; fi
 
     - name: Clean remote directory
-      uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
       with:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USERNAME }}
@@ -161,7 +161,7 @@ jobs:
         script: rm -rf /var/www/ea-nation-server/*
 
     - name: Copy project files to remote server
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@ff85246acaad7bdce478db94a363cd2bf7c90345 # v1.0.0
       with:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USERNAME }}
@@ -169,15 +169,8 @@ jobs:
         source: "."
         target: "/var/www/ea-nation-server"
 
-    - name: Login to GitHub Docker Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ secrets.GH_USERNAME }}
-        password: ${{ secrets.GH_TOKEN }}
-
     - name: Run Docker Compose on remote server
-      uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
       with:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USERNAME }}
@@ -185,7 +178,7 @@ jobs:
         script: |
           echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GH_USERNAME }}" --password-stdin
           cd /var/www/ea-nation-server
-          source .env
+          chmod 600 .env
           docker compose down --remove-orphans
           docker compose pull
           docker compose up --build -d
