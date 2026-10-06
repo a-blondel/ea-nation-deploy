@@ -144,6 +144,7 @@ jobs:
         address=/tos.ea.com/${{ secrets.SERVER_IP }}
         address=/msgconn.beta.ea.com/${{ secrets.SERVER_IP }}
         address=/naswii.nintendowifi.net/${{ secrets.SERVER_IP }}
+        address=/conntest.nintendowifi.net/${{ secrets.SERVER_IP }}
         EOF
         DNAS_EU_IP="${{ secrets.DNAS_EU_IP }}"
         DNAS_JP_IP="${{ secrets.DNAS_JP_IP }}"
